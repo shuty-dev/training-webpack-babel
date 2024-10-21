@@ -1,21 +1,24 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
       },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"], // 解決する拡張子
   },
   mode: "development",
   devtool:
