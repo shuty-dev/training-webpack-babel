@@ -10,10 +10,23 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, "src"), // ローダーが処理するディレクトリ
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.scss$/,
+        include: path.resolve(__dirname, "src/scss"), // ローダーが処理するディレクトリ
+        // 利用するローダー（後ろから順に処理される）
+        use: [
+          // HTML の head 要素内にスタイルを追加する
+          "style-loader",
+          // CSS を モジュール に変換する
+          "css-loader",
+          // Sass を CSS にコンパイルする
+          "sass-loader",
+        ],
       },
     ],
   },
