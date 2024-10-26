@@ -1,5 +1,5 @@
 import { Post, Comment, Album } from "./types";
-const axios = require("axios");
+import axios, { AxiosResponse, AxiosError } from "axios";
 
 type MultiData = {
   post: Post;
@@ -12,12 +12,12 @@ export async function fetchData(): Promise<Post | null> {
   // axiosでGETリクエストを送信し、Promiseを返す
   return axios
     .get("https://jsonplaceholder.typicode.com/posts/1")
-    .then((response) => {
+    .then((response: AxiosResponse) => {
       // 成功時の処理
       console.log("データ取得成功:", response.data);
       return response.data; // 次のthenにデータを渡す
     })
-    .catch((error) => {
+    .catch((error: AxiosError) => {
       // エラー時の処理
       console.error("データ取得エラー:", error);
       return null; // エラー時はnullを返す
