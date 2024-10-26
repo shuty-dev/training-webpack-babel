@@ -1,6 +1,9 @@
-const greet = (num: number): void => {
-  console.log("Hello, Webpack with Babel and TypeScript!!! 🚀");
-  console.log(`Number: ${num}`);
-};
+import myRandom from "./random";
+import greet from "./greet";
+
+window.document.getElementById("btn")?.addEventListener("click", () => {
+  const randomNum = Math.floor(Math.random() * 10);
+  window.document.getElementById("counter")!.innerText = myRandom().toString();
+});
 
 greet(1);
