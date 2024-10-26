@@ -20,7 +20,4 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"], // 解決する拡張子
   },
-  mode: "development",
-  devtool:
-    process.env.NODE_ENV === "production" ? "source-map" : "eval-source-map",
 };
