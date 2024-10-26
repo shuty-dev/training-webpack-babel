@@ -16,6 +16,8 @@ greet(1);
 // Promiseを使ってデータ取得を実行
 fetchData().then((data): void => {
   // データ取得後の追加処理
+  if (data === null) return;
+
   console.log("取得したデータ:", data);
   doc.getElementById("title")!.innerText = data.title;
 });

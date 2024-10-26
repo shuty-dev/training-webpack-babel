@@ -16,6 +16,16 @@ module.exports = {
         },
       },
       {
+        test: /\.ts$/,
+        include: path.resolve(__dirname, "src"), // ローダーが処理するディレクトリ
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: false,
+          },
+        },
+      },
+      {
         test: /\.scss$/,
         include: path.resolve(__dirname, "src/scss"), // ローダーが処理するディレクトリ
         // 利用するローダー（後ろから順に処理される）
