@@ -1,3 +1,5 @@
+import "./scss/style.scss";
+
 import myRandom from "./random";
 import greet from "./greet";
 
