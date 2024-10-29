@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.ts",
@@ -38,9 +39,26 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.png$/,
+        type: "asset/resource",
+        generator: {
+          filename: "static/[hash][ext][query]",
+        },
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"], // 解決する拡張子
+    extensions: [".ts", ".js", ".png"], // 解決する拡張子
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
   },
+  plugins: [
+    new webpack.IgnorePlugin({
+      // resourceRegExp: /^((?!2\.png).)*\.png$/, // 2.png以外の全ての.pngを無視
+      resourceRegExp: /3\.png$/,
+      contextRegExp: /src\/images$/,
+    }),
+  ],
 };
