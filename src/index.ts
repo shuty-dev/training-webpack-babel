@@ -3,11 +3,13 @@ import "./scss/style.scss";
 import myRandom from "./random";
 import greet from "./greet";
 import { fetchData, fetchMultiData } from "./promise";
+import { getImage } from "./get_image";
+
+// import "@/images";
 
 const doc = window.document;
 
 doc.getElementById("btn")?.addEventListener("click", () => {
-  const randomNum = Math.floor(Math.random() * 10);
   doc.getElementById("counter")!.innerText = myRandom().toString();
 });
 
@@ -31,3 +33,5 @@ fetchMultiData().then((data): void => {
   doc.getElementById("comment")!.innerText = data.comment.name;
   doc.getElementById("album")!.innerText = data.album.title;
 });
+
+getImage(2);
